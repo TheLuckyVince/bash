@@ -2,10 +2,9 @@
 function install_tinyproxy() {
   cd ~
   wget https://github.com/tinyproxy/tinyproxy/releases/download/1.11.1/tinyproxy-1.11.1.tar.gz
-  tar -zxvf tinyproxy-1.11.1.tar.gz
-  cd ~/tinyproxy-1.11.1/
-  sudo ./autogen.sh
-  sudo ./configure
+  tar -zxvf ~/tinyproxy-1.11.1.tar.gz
+  sudo ~/tinyproxy-1.11.1/autogen.sh
+  sudo ~/tinyproxy-1.11.1/configure
   sudo make && sudo make install
   cd /usr/local && sudo mkdir -p var
   cd var && sudo mkdir log
