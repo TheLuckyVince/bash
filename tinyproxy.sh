@@ -5,7 +5,7 @@ function install_tinyproxy() {
   tar -zxvf ~/tinyproxy-1.11.1.tar.gz
   sudo ~/tinyproxy-1.11.1/autogen.sh
   sudo ~/tinyproxy-1.11.1/configure
-  sudo make && sudo make install
+  sudo ~/tinyproxy-1.11.1/make && sudo make ~/tinyproxy-1.11.1/install
   cd /usr/local && sudo mkdir -p var
   cd var && sudo mkdir log
   cd log && sudo mkdir tinyproxy
