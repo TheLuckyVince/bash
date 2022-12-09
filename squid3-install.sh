@@ -11,8 +11,8 @@
 ############################################################
 
 if [ `whoami` != root ]; then
-	echo "ERROR: You need to run the script as user root or add sudo before command."
-	exit 1
+  echo "ERROR: You need to run the script as user root or add sudo before command."
+  exit 1
 fi
 
 /usr/bin/wget --no-check-certificate -O /usr/local/bin/sok-find-os https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/sok-find-os.sh > /dev/null 2>&1
@@ -37,7 +37,7 @@ if cat /etc/os-release | grep PRETTY_NAME | grep "Ubuntu 22.04"; then
     /usr/bin/touch /etc/squid/blacklist.acl
     /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/conf/ubuntu-2204.conf
     if [ -f /sbin/iptables ]; then
-        /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
+        /sbin/iptables -I INPUT -p tcp --dport 6000 -j ACCEPT
         /sbin/iptables-save
     fi
     service squid restart
@@ -48,9 +48,9 @@ elif cat /etc/os-release | grep PRETTY_NAME | grep "Ubuntu 20.04"; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
+    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/TheLuckyVince/bash/main/squid.conf
     if [ -f /sbin/iptables ]; then
-        /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
+        /sbin/iptables -I INPUT -p tcp --dport 6000 -j ACCEPT
         /sbin/iptables-save
     fi
     service squid restart
@@ -61,8 +61,8 @@ elif cat /etc/os-release | grep PRETTY_NAME | grep "Ubuntu 18.04"; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
-    /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
+    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/TheLuckyVince/bash/main/squid.conf
+    /sbin/iptables -I INPUT -p tcp --dport 6000 -j ACCEPT
     /sbin/iptables-save
     service squid restart
     systemctl enable squid
@@ -72,8 +72,8 @@ elif cat /etc/os-release | grep PRETTY_NAME | grep "Ubuntu 16.04"; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
-    /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
+    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/TheLuckyVince/bash/main/squid.conf
+    /sbin/iptables -I INPUT -p tcp --dport 6000 -j ACCEPT
     /sbin/iptables-save
     service squid restart
     update-rc.d squid defaults
@@ -83,8 +83,8 @@ elif cat /etc/*release | grep DISTRIB_DESCRIPTION | grep "Ubuntu 14.04"; then
     touch /etc/squid3/passwd
     /bin/rm -f /etc/squid3/squid.conf
     /usr/bin/touch /etc/squid3/blacklist.acl
-    /usr/bin/wget --no-check-certificate -O /etc/squid3/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
-    /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
+    /usr/bin/wget --no-check-certificate -O /etc/squid3/squid.conf https://raw.githubusercontent.com/TheLuckyVince/bash/main/squid.conf
+    /sbin/iptables -I INPUT -p tcp --dport 6000 -j ACCEPT
     /sbin/iptables-save
     service squid3 restart
     ln -s /etc/squid3 /etc/squid
@@ -98,8 +98,8 @@ elif cat /etc/os-release | grep PRETTY_NAME | grep "jessie"; then
     touch /etc/squid3/passwd
     /bin/rm -f /etc/squid3/squid.conf
     /usr/bin/touch /etc/squid3/blacklist.acl
-    /usr/bin/wget --no-check-certificate -O /etc/squid3/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
-    /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
+    /usr/bin/wget --no-check-certificate -O /etc/squid3/squid.conf https://raw.githubusercontent.com/TheLuckyVince/bash/main/squid.conf
+    /sbin/iptables -I INPUT -p tcp --dport 6000 -j ACCEPT
     /sbin/iptables-save
     service squid3 restart
     update-rc.d squid3 defaults
@@ -112,8 +112,8 @@ elif cat /etc/os-release | grep PRETTY_NAME | grep "stretch"; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
-    /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
+    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/TheLuckyVince/bash/main/squid.conf
+    /sbin/iptables -I INPUT -p tcp --dport 6000 -j ACCEPT
     /sbin/iptables-save
     systemctl enable squid
     systemctl restart squid
@@ -125,8 +125,8 @@ elif cat /etc/os-release | grep PRETTY_NAME | grep "buster"; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
-    /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
+    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/TheLuckyVince/bash/main/squid.conf
+    /sbin/iptables -I INPUT -p tcp --dport 6000 -j ACCEPT
     /sbin/iptables-save
     systemctl enable squid
     systemctl restart squid
@@ -137,7 +137,7 @@ elif cat /etc/os-release | grep PRETTY_NAME | grep "CentOS Linux 7"; then
     /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/conf/squid-centos7.conf
     systemctl enable squid
     systemctl restart squid
-    firewall-cmd --zone=public --permanent --add-port=3128/tcp
+    firewall-cmd --zone=public --permanent --add-port=6000/tcp
     firewall-cmd --reload
 elif cat /etc/os-release | grep PRETTY_NAME | grep "CentOS Linux 8"; then
     yum install squid httpd-tools -y
@@ -146,7 +146,7 @@ elif cat /etc/os-release | grep PRETTY_NAME | grep "CentOS Linux 8"; then
     /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/conf/squid-centos7.conf
     systemctl enable squid
     systemctl restart squid
-    firewall-cmd --zone=public --permanent --add-port=3128/tcp
+    firewall-cmd --zone=public --permanent --add-port=6000/tcp
     firewall-cmd --reload
 else
     echo "OS NOT SUPPORTED.\n"
