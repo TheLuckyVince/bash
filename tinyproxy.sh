@@ -1,9 +1,13 @@
 #!/bin/bash
+apt update
+apt install binutils
+apt install automake
+apt install build-essentia
 wget https://github.com/tinyproxy/tinyproxy/releases/download/1.11.1/tinyproxy-1.11.1.tar.gz
 tar -zxvf tinyproxy-1.11.1.tar.gz -C ~
 ~/tinyproxy-1.11.1/autogen.sh
 ~/tinyproxy-1.11.1/configure
-/usr/bin/make ~/tinyproxy-1.11.1/ && /usr/bin/make ~/tinyproxy-1.11.1/install
+cd ~/tinyproxy-1.11.1 && /usr/bin/make && /usr/bin/make install
 cd /usr/local && sudo mkdir -p var
 cd var && sudo mkdir log
 cd log && sudo mkdir tinyproxy
